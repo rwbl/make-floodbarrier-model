@@ -1,0 +1,557 @@
+[
+    {
+        "id": "60921085.49545",
+        "type": "tab",
+        "label": "Flood Barrier Model",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "bd125220.f7553",
+        "type": "inject",
+        "z": "60921085.49545",
+        "name": "",
+        "topic": "floodbarrier/gatemotorfwd",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 190,
+        "y": 100,
+        "wires": [
+            [
+                "9f358cf4.e3ba"
+            ]
+        ]
+    },
+    {
+        "id": "9f358cf4.e3ba",
+        "type": "mqtt out",
+        "z": "60921085.49545",
+        "name": "",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "broker": "574c6d3.c9a6294",
+        "x": 390,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "12ee0075.09475",
+        "type": "inject",
+        "z": "60921085.49545",
+        "name": "",
+        "topic": "floodbarrier/gatemotorbrk",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 190,
+        "y": 140,
+        "wires": [
+            [
+                "9f358cf4.e3ba"
+            ]
+        ]
+    },
+    {
+        "id": "db56c800.d4eaf8",
+        "type": "inject",
+        "z": "60921085.49545",
+        "name": "",
+        "topic": "floodbarrier/gatemotorrev",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 190,
+        "y": 180,
+        "wires": [
+            [
+                "9f358cf4.e3ba"
+            ]
+        ]
+    },
+    {
+        "id": "21ee41be.45d23e",
+        "type": "comment",
+        "z": "60921085.49545",
+        "name": "River Level",
+        "info": "",
+        "x": 120,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "ebeafb00.adefb8",
+        "type": "mqtt in",
+        "z": "60921085.49545",
+        "name": "",
+        "topic": "floodbarrier/#",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "574c6d3.c9a6294",
+        "x": 130,
+        "y": 660,
+        "wires": [
+            [
+                "e8d7b1f2.fe5a6"
+            ]
+        ]
+    },
+    {
+        "id": "e8d7b1f2.fe5a6",
+        "type": "debug",
+        "z": "60921085.49545",
+        "name": "DEBUG Floodbarrier",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 840,
+        "y": 660,
+        "wires": []
+    },
+    {
+        "id": "a2e018e4.2c3f98",
+        "type": "ui_chart",
+        "z": "60921085.49545",
+        "name": "Chart River Level Abs NHN",
+        "group": "cb28e5a8.1fa548",
+        "order": 2,
+        "width": "3",
+        "height": "3",
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "bezier",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 860,
+        "y": 420,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "9e0327bd.a61d38",
+        "type": "ui_gauge",
+        "z": "60921085.49545",
+        "name": "Gauge River Level Abs NHN",
+        "group": "cb28e5a8.1fa548",
+        "order": 1,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "Absolut cm ü. NHN",
+        "label": "cm",
+        "format": "{{value}}",
+        "min": "-200",
+        "max": "400",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 860,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "6cc3514a.5b84e",
+        "type": "ui_gauge",
+        "z": "60921085.49545",
+        "name": "Gauge River Level Rel PNP",
+        "group": "cb28e5a8.1fa548",
+        "order": 3,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "Relativ zum PNP cm",
+        "label": "cm",
+        "format": "{{value}}",
+        "min": "200",
+        "max": "900",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 860,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "30f7ced9.1d5f72",
+        "type": "ui_chart",
+        "z": "60921085.49545",
+        "name": "Chart River Level Rel PNP",
+        "group": "cb28e5a8.1fa548",
+        "order": 5,
+        "width": "3",
+        "height": "3",
+        "label": "",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "bezier",
+        "nodata": "",
+        "dot": false,
+        "ymin": "",
+        "ymax": "",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "86400",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "useOldStyle": false,
+        "outputs": 1,
+        "x": 860,
+        "y": 320,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "402d1440.0b2e4c",
+        "type": "ui_text",
+        "z": "60921085.49545",
+        "group": "cb28e5a8.1fa548",
+        "order": 6,
+        "width": "6",
+        "height": "2",
+        "name": "Text River Elbe Ref Info",
+        "label": "",
+        "format": "",
+        "layout": "col-center",
+        "x": 850,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "20477d21.0e9942",
+        "type": "ui_template",
+        "z": "60921085.49545",
+        "group": "cb28e5a8.1fa548",
+        "name": "Template River Elbe Ref Info",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "format": "<div ng-style=\"{'background-color': 'lightgray', 'color': 'black', 'font-size': '0.6em'}\" >\n    PNP -5,006 m. ü. NHN<br>\n    Messwerte ungeprüft, Quelle www.pegelonline.wsv.de\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "templateScope": "local",
+        "x": 600,
+        "y": 600,
+        "wires": [
+            [
+                "402d1440.0b2e4c"
+            ]
+        ]
+    },
+    {
+        "id": "52fcf336.12f77c",
+        "type": "comment",
+        "z": "60921085.49545",
+        "name": "Gate Motor Control",
+        "info": "Controlt the Lego Powerfunctions Motor",
+        "x": 150,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "98e20d85.d89bd",
+        "type": "comment",
+        "z": "60921085.49545",
+        "name": "Gate State Control",
+        "info": "Control the Gate State:\n0=Gate Closed\n1=Gate Open",
+        "x": 650,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "ebcd5db7.4e796",
+        "type": "inject",
+        "z": "60921085.49545",
+        "name": "Set Gate State 1 (open)",
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 680,
+        "y": 100,
+        "wires": [
+            [
+                "9af83e0c.a29e6"
+            ]
+        ]
+    },
+    {
+        "id": "9af83e0c.a29e6",
+        "type": "mqtt out",
+        "z": "60921085.49545",
+        "name": "Publish floodbarrier/gatestate",
+        "topic": "floodbarrier/gatestate",
+        "qos": "",
+        "retain": "",
+        "broker": "574c6d3.c9a6294",
+        "x": 1000,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "8f0b2988.df0978",
+        "type": "inject",
+        "z": "60921085.49545",
+        "name": "Set Gate State 0 (closed) [initial]",
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 710,
+        "y": 140,
+        "wires": [
+            [
+                "9af83e0c.a29e6"
+            ]
+        ]
+    },
+    {
+        "id": "ebf667a3.fef278",
+        "type": "inject",
+        "z": "60921085.49545",
+        "name": "Set Gate State Threshold [initial]",
+        "topic": "",
+        "payload": "190",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 710,
+        "y": 180,
+        "wires": [
+            [
+                "99803f13.fb4cc"
+            ]
+        ]
+    },
+    {
+        "id": "99803f13.fb4cc",
+        "type": "mqtt out",
+        "z": "60921085.49545",
+        "name": "Publish floodbarrier/gatestatethreshold",
+        "topic": "floodbarrier/gatestatethreshold",
+        "qos": "",
+        "retain": "",
+        "broker": "574c6d3.c9a6294",
+        "x": 1030,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "b5e7171b.3b4a18",
+        "type": "mqtt out",
+        "z": "60921085.49545",
+        "name": "Publish floodbarrier/rivertide",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "broker": "574c6d3.c9a6294",
+        "x": 860,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "4d96e4c6.39fadc",
+        "type": "mqtt in",
+        "z": "60921085.49545",
+        "name": "",
+        "topic": "floodbarrier/riverlevelabsnhn",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "574c6d3.c9a6294",
+        "x": 180,
+        "y": 380,
+        "wires": [
+            [
+                "9e0327bd.a61d38",
+                "a2e018e4.2c3f98"
+            ]
+        ]
+    },
+    {
+        "id": "305ce336.a81cec",
+        "type": "mqtt in",
+        "z": "60921085.49545",
+        "name": "",
+        "topic": "floodbarrier/riverlevelrelpnp",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "574c6d3.c9a6294",
+        "x": 170,
+        "y": 280,
+        "wires": [
+            [
+                "6cc3514a.5b84e",
+                "30f7ced9.1d5f72"
+            ]
+        ]
+    },
+    {
+        "id": "3dc67367.14930c",
+        "type": "mqtt in",
+        "z": "60921085.49545",
+        "name": "",
+        "topic": "floodbarrier/rivertide",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "574c6d3.c9a6294",
+        "x": 150,
+        "y": 540,
+        "wires": [
+            [
+                "b5e7171b.3b4a18"
+            ]
+        ]
+    },
+    {
+        "id": "f48dd4eb.83cc08",
+        "type": "inject",
+        "z": "60921085.49545",
+        "name": "Inject Clear Chart",
+        "topic": "",
+        "payload": "[]",
+        "payloadType": "json",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "0.2",
+        "x": 160,
+        "y": 480,
+        "wires": [
+            [
+                "4ff26bc.a409094"
+            ]
+        ]
+    },
+    {
+        "id": "4ff26bc.a409094",
+        "type": "ui_button",
+        "z": "60921085.49545",
+        "name": "Clear Charts",
+        "group": "cb28e5a8.1fa548",
+        "order": 7,
+        "width": "2",
+        "height": "1",
+        "passthru": false,
+        "label": "Clear Charts",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "[]",
+        "payloadType": "json",
+        "topic": "",
+        "x": 610,
+        "y": 480,
+        "wires": [
+            [
+                "30f7ced9.1d5f72",
+                "a2e018e4.2c3f98"
+            ]
+        ]
+    },
+    {
+        "id": "574c6d3.c9a6294",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "Broker Localhost",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "cb28e5a8.1fa548",
+        "type": "ui_group",
+        "z": "",
+        "name": "Elbe Wasserstand Schulau",
+        "tab": "ab9d9e84.0a7",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "ab9d9e84.0a7",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Flood Barrier Model",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
