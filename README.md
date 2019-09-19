@@ -9,8 +9,11 @@ A LEGO Model to control the gate of a flood barrier model by a microcontroller a
 * To display information in a small display, i.e. Abs NHN (cm), Rel PNP = Relative Tide Gauge Zero (cm), PNP=Tide Gauge Zero (m), Tide Ebb or Flood, Gate State Open or Close.
 * To remote control the gate.
 * To publish tide data.
-
 This make project is for private use only.
+
+![flood-barrier-p-fv](https://user-images.githubusercontent.com/47274144/65248648-cc894600-daf2-11e9-989e-08f7e56f9e6e.PNG)
+
+![flood-barrier-t](https://user-images.githubusercontent.com/47274144/65248662-d14dfa00-daf2-11e9-9f9a-8541ccdbc99a.PNG)
 
 ### Creation Rules
 * Use as microcontroller an ESP8266 microcontroller
@@ -71,6 +74,8 @@ Some further ideas have come to mind = planned for a next version.
 * Request online sea weather forecast to display on OLED row 6 (wind,temperature).
 
 ## Wiring
+![floodbarrier-c](https://user-images.githubusercontent.com/47274144/65248619-bed3c080-daf2-11e9-99fe-e938e12ad2e4.png)
+
 ```
 IR Sender=NodeMCU
 Signal=D2 (GPIO4) yellow
@@ -209,6 +214,11 @@ Row 7: Version
 In case of an error, the error message is displayed on row 1.
 
 Note: The columns start at position 1 and not 0.
+
+## Node-RED
+![flood-barrier-nr-f](https://user-images.githubusercontent.com/47274144/65248639-c72bfb80-daf2-11e9-919f-35ba0d2f5841.PNG)
+
+![flood-barrier-nr-d](https://user-images.githubusercontent.com/47274144/65248627-c3987480-daf2-11e9-8daf-1a082f56a4b5.PNG)
 
 ## Soure Code
 The source code is well documented.
