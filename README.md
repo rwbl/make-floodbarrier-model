@@ -198,22 +198,21 @@ The 4 digits used: most left set by SetSegments, the other 3 are set most right 
 ### OLED Display
 The display shows river "Elbe" various levels + Tide (Ebb or Flood; German text used Ebbe, Flut) + Gate State (Open or Closed; German text used AUF, ZU).
 The B4R library rESPOLED1608 is used to display 8 rows (0-7) with up-to 16 columns (0-15).
-[CREDIT] The library is wrapped based on [project](https://github.com/remoteme/esp8266-OLED). Thanks to the author.
 Each time the display is updated, the rows are cleared prior printing new rows.
-Rows:
-Row 0: Not used
-Row 1: Abs NHN in cm
-Row 2: Relative PNP in cm
-Row 3: PNP in m
-Row 4: Tide: Ebbe or Tide: Flut
-Row 5: Tor: AUF or Tor: ZU
-Row 6:
-Not used
-Row 7: Version
+
+    Rows:
+    Row 0: Not used
+    Row 1: Abs NHN in cm
+    Row 2: Relative PNP in cm
+    Row 3: PNP in m
+    Row 4: Tide: Ebbe or Tide: Flut
+    Row 5: Tor: AUF or Tor: ZU
+    Row 6: Not used
+   Row 7: Version
 
 In case of an error, the error message is displayed on row 1.
 
-Note: The columns start at position 1 and not 0.
+_Note_: The columns start at position 1 and not 0.
 
 ## Node-RED
 ![flood-barrier-nr-f](https://user-images.githubusercontent.com/47274144/65248639-c72bfb80-daf2-11e9-919f-35ba0d2f5841.PNG)
@@ -222,7 +221,7 @@ Note: The columns start at position 1 and not 0.
 
 ## Soure Code
 The source code is well documented.
-See files b4r-source.zip, b4r-additional-libraries.ip, node-red.flow.
+See files b4r-source.zip, b4r-additional-libraries.zip, node-red.flow.
 
 ## Development Notes
 
