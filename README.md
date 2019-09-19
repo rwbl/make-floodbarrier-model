@@ -9,7 +9,8 @@ A LEGO Model to control the gate of a flood barrier model by a microcontroller w
 * To display information in a small display, i.e. Abs NHN (cm), Rel PNP = Relative Tide Gauge Zero (cm), PNP=Tide Gauge Zero (m), Tide Ebb or Flood, Gate State Open or Close.
 * To remote control the gate.
 * To publish tide data.
-This make project is for private use only.
+
+_Note_: This make project is for private use only.
 
 ![flood-barrier-p-fv](https://user-images.githubusercontent.com/47274144/65248648-cc894600-daf2-11e9-989e-08f7e56f9e6e.PNG)
 
