@@ -1,5 +1,5 @@
 # make_project_floodbarrier_model
-A LEGO Model to control the gate of a flood barrier model by a microcontroller and LEGO Power Functions.
+A LEGO Model to control the gate of a flood barrier model by a microcontroller with sensors, actuators and LEGO Power Functions. 
 
 # Objectives
 * To create a model of a flood barrier with a gate, in the style of the "Sperrwerk Wedeler Au" (barrier between the German rivers "Elbe" and "Wedeler Au").
@@ -222,7 +222,7 @@ Note: The columns start at position 1 and not 0.
 
 ## Soure Code
 The source code is well documented.
-See B4R-
+See files b4r-source.zip, b4r-additional-libraries.ip, node-red.flow.
 
 ## Development Notes
 
