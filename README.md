@@ -64,7 +64,8 @@ A push-button enabled to open or close the gate manually.
 MQTT messages are published with the river level information (can be used to display a Node-RED Dashboard with gauges and charts), but also to control the gate, move the motor or set the river level threshold.
 
 ### Outline
-Some further ideas have come to mind = planned for a next version.
+See also TODO.md.
+Some ideas come to mind planned for a next version.
 * Display real signal depending gate state.
 	* Requires additional LEDs (i.e. gate open: 1 white + 2 red; gate closed: 2 red). There are no GPIO pins left = requires multiple LED on one pin solution (i.e. Shift Register 74HC595 or MAX7219)
 * REED switch to control gate close position (instead of using timer from open to close position).
@@ -248,7 +249,7 @@ Each time the display is updated, the rows are cleared (tmDisplay.Clear) prior p
     Row 4: Tide: Ebbe or Tide: Flut
     Row 5: Tor: AUF or Tor: ZU
     Row 6: Not used
-    Row 7: Version
+    Row 7: Not used - but can be used to display Version
 
 In case of an error, the error message is displayed on row 1.
 
