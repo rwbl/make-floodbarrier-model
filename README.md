@@ -266,21 +266,25 @@ See files b4r-source.zip, b4r-additional-libraries.zip, node-red.flow.
 
 ## Development Notes
 
-### B4R IDE Compile & Upload NodeMCU
-Steps
-1. Set Gate to CLOSE position using the Lego Powerfunctions IR Remote Control
-2. Turn the Lego Powerfunctions Motor OFF
-3. Compile & Upload
-4. Turn the Lego Powerfunctions Motor ON
+### B4R IDE
+Board NodeMCU 1.0 (ESP-12E Module) with 4MB.
+IDE Options > Configure Process Timeout set to 120.
 
-### Switch Model ON
-1. Set Gate to CLOSE position using the Lego Powerfunctions IR Remote Control
-2. Turn the Lego Powerfunctions Motor ON
+### B4R IDE Compile & Upload NodeMCU
+1. Turn on the LEGO Power Functions Battery Box
+2. Set Gate to CLOSE position using the LEGO Power Functions IR Remote Control
+3. Turn the LEGO Power Functions M-Motor OFF
+4. Compile & Upload
+5. Turn the LEGO Power Functions M-Motor ON
+
+### Switch the Model ON
+1. Turn the LEGO Power Functions M-Motor ON
+2. Set the Gate to CLOSE position using the LEGO Power Functions IR Remote Control
 3. Power ON the NodeMCU
 
-### Switch Model OFF
-1. Set Gate to CLOSE position using the Lego Powerfunctions IR Remote Control or Node-RED Client or B4J Client
-2. Turn the Lego Powerfunctions Motor OFF
+### Switch the Model OFF
+1. Set the Gate to CLOSE position using the LGO Power Functions IR Remote Control or Push-Button or Node-RED Client
+2. Turn the LEGO Power Functions Motor OFF
 3. Power OFF the NodeMCU
 
 ### Credits
