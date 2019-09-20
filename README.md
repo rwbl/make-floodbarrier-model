@@ -278,6 +278,8 @@ IDE Options > Configure Process Timeout set to 120.
 4. Compile & Upload
 5. Turn the LEGO Power Functions M-Motor ON
 
+_Note_: It might happen from time-to-time, that an "unable to upload" error occurs. Try compiling again or reset the NodeMCU.
+
 ### Switch the Model ON
 1. Turn the LEGO Power Functions M-Motor ON
 2. Set the Gate to CLOSE position using the LEGO Power Functions IR Remote Control
