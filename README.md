@@ -160,6 +160,7 @@ topic floodbarrier/riverlevelabsnhn ; payload NN cm
 topic floodbarrier/riverlevelrelpnp ; payload NN cm
 topic floodbarrier/riverlevelpnp ; payload NN m
 topic floodbarrier/riverleveltide ; payload Flut or Ebbe
+topic floodbarrier/gatestate ; payload 0 (closed), 1 (open)
 ```
 
 The B4R program subscribes to:
