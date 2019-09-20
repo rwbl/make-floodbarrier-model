@@ -1,4 +1,4 @@
-# make_project_floodbarrier_model
+# make-project-floodbarrier-model
 A LEGO Model to control the gate of a flood barrier model by a microcontroller with sensors, actuators and LEGO Power Functions. 
 
 # Objectives
@@ -110,7 +110,46 @@ Gate closed=green=D8 (GPIO15)
 
 ### HTTP
 In regular intervals, a HTTP download request (url hardcoded) is used to get the river level information from a German webservice PEGELONLINE.de.
-The HTTP response is a JSON string with is parsed (quick and dirty by using ByteConverter methods Split and IndexOf with StringFromBytes to get the various river "Elbe" values.
+The HTTP response is a JSON string which is parsed (bit quick and dirty using various ByteConverter methods, i.e. Split,IndexOf and others with StringFromBytes to get the various river "Elbe" values.
+Extract from the HTTP JSOn Response:
+```
+{...
+  "timeseries": [
+	{
+      "currentMeasurement": {
+        "timestamp": "2019-09-15T11:50:00+02:00",
+        "value": 393.0,
+        "trend": 1,
+        "stateMnwMhw": "unknown",
+        "stateNswHsw": "unknown"
+      },
+      "gaugeZero": {
+        "unit": "m. ü. NHN",
+        "value": -5.006,
+        "validFrom": "2001-11-01"
+      }
+    }
+  ]
+...}
+```
+The keys used are
+
+    timerseries[0].currentMeasurement.value for Abs PNP.
+    timerseries[0].gaugeZero.value for PNP.
+
+In method HTTP JobDone, the values are extracted (snippet):
+
+    Dim bc As ByteConverter
+    For Each value() As Byte In bc.Split(jobresponse, """value"": ")
+      If bc.IndexOf(value, "trend".GetBytes) > 0 Then
+        riverlevelRELPNP = bc.StringFromBytes(bc.SubString2(value, 0, bc.IndexOf(value, ",".GetBytes)))
+      End If
+      If bc.IndexOf(value, "valid".GetBytes) > 0 Then
+        riverlevelPNP = bc.StringFromBytes(bc.SubString2(value, 0, bc.IndexOf(value, ",".GetBytes)))
+	riverlevelPNPS = bc.StringFromBytes(bc.SubString2(value, 0, bc.IndexOf(value, ",".GetBytes)))
+      End If
+     Next
+     riverlevelABSNHN = riverlevelRELPNP + (riverlevelPNP * 100)
 
 ### MQTT
 A connection is made to a MQTT Broker (IP address hardcoded) running on a Raspberry Pi 4.
@@ -184,6 +223,7 @@ To display the minus sign = the segment G bit set, all other segents are not set
 ParseInt with radix 2 for the string with length 8 holding the bits for the segment
 
     displaySegments(0) = Bit.ParseInt("01000000",2)
+
 The 4 digits used: most left set by SetSegments, the other 3 are set most right starting at 2 pos (=index 1)
 [0][1][2][3] > [minus or empty][N][N][N]
 
@@ -199,9 +239,8 @@ The 4 digits used: most left set by SetSegments, the other 3 are set most right 
 ### OLED Display
 The display shows river "Elbe" various levels + Tide (Ebb or Flood; German text used Ebbe, Flut) + Gate State (Open or Closed; German text used AUF, ZU).
 The B4R library rESPOLED1608 is used to display 8 rows (0-7) with up-to 16 columns (0-15).
-Each time the display is updated, the rows are cleared prior printing new rows.
+Each time the display is updated, the rows are cleared (tmDisplay.Clear) prior printing new rows.
 
-    Rows:
     Row 0: Not used
     Row 1: Abs NHN in cm
     Row 2: Relative PNP in cm
@@ -209,7 +248,7 @@ Each time the display is updated, the rows are cleared prior printing new rows.
     Row 4: Tide: Ebbe or Tide: Flut
     Row 5: Tor: AUF or Tor: ZU
     Row 6: Not used
-   Row 7: Version
+    Row 7: Version
 
 In case of an error, the error message is displayed on row 1.
 
