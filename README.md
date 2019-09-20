@@ -30,7 +30,7 @@ _Note_: This make project is for private use only.
 * 1x 4-Digit Display (Catalex 4-Digit Display)
 * 1x OLED Display
 * 1x REED Switch (KY-021)
-* 1x Push-button
+* 1x Push-Button
 * 1x LED Red
 * 1x LED Green
 * LEGO Power Functions Light (8870)
@@ -95,16 +95,16 @@ SCL=D5 (GPIO14)
 VCC=3V3
 GND=GND
 
-REED Switch
+REED Switch=NodeMMCU
 S=D1 (GPIO5)
 VCC=3V3
 GND=GND
 
-Gate Switch=NodeMCU
+Push-Button Gate Switch=NodeMCU
 S=D3 (GPIO0)
 GND=GND
 
-LED GATE SIGNAL
+LED GATE SIGNAL=NodeMCU
 Gate open=green=RX (GPIO03)
 Gate closed=green=D8 (GPIO15)
 ```
@@ -273,7 +273,7 @@ IDE Options > Configure Process Timeout set to 120.
 
 ### B4R IDE Compile & Upload NodeMCU
 1. Turn on the LEGO Power Functions Battery Box
-2. Set Gate to CLOSE position using the LEGO Power Functions IR Remote Control
+2. Set Gate to CLOSE position using the LEGO Power Functions IR Remote Control or Push-Button
 3. Turn the LEGO Power Functions M-Motor OFF
 4. Compile & Upload
 5. Turn the LEGO Power Functions M-Motor ON
