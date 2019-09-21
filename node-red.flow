@@ -35,7 +35,7 @@
         "qos": "",
         "retain": "",
         "broker": "574c6d3.c9a6294",
-        "x": 390,
+        "x": 410,
         "y": 100,
         "wires": []
     },
@@ -86,7 +86,7 @@
         "name": "River Level",
         "info": "",
         "x": 120,
-        "y": 240,
+        "y": 540,
         "wires": []
     },
     {
@@ -99,7 +99,7 @@
         "datatype": "auto",
         "broker": "574c6d3.c9a6294",
         "x": 130,
-        "y": 660,
+        "y": 960,
         "wires": [
             [
                 "e8d7b1f2.fe5a6"
@@ -118,7 +118,7 @@
         "complete": "payload",
         "targetType": "msg",
         "x": 840,
-        "y": 660,
+        "y": 960,
         "wires": []
     },
     {
@@ -127,7 +127,7 @@
         "z": "60921085.49545",
         "name": "Chart River Level Abs NHN",
         "group": "cb28e5a8.1fa548",
-        "order": 2,
+        "order": 4,
         "width": "3",
         "height": "3",
         "label": "",
@@ -158,7 +158,7 @@
         "useOldStyle": false,
         "outputs": 1,
         "x": 860,
-        "y": 420,
+        "y": 720,
         "wires": [
             []
         ]
@@ -169,7 +169,7 @@
         "z": "60921085.49545",
         "name": "Gauge River Level Abs NHN",
         "group": "cb28e5a8.1fa548",
-        "order": 1,
+        "order": 2,
         "width": "3",
         "height": "3",
         "gtype": "gage",
@@ -186,7 +186,7 @@
         "seg1": "",
         "seg2": "",
         "x": 860,
-        "y": 380,
+        "y": 680,
         "wires": []
     },
     {
@@ -195,7 +195,7 @@
         "z": "60921085.49545",
         "name": "Gauge River Level Rel PNP",
         "group": "cb28e5a8.1fa548",
-        "order": 3,
+        "order": 6,
         "width": "3",
         "height": "3",
         "gtype": "gage",
@@ -212,7 +212,7 @@
         "seg1": "",
         "seg2": "",
         "x": 860,
-        "y": 280,
+        "y": 580,
         "wires": []
     },
     {
@@ -221,7 +221,7 @@
         "z": "60921085.49545",
         "name": "Chart River Level Rel PNP",
         "group": "cb28e5a8.1fa548",
-        "order": 5,
+        "order": 10,
         "width": "3",
         "height": "3",
         "label": "",
@@ -252,7 +252,7 @@
         "useOldStyle": false,
         "outputs": 1,
         "x": 860,
-        "y": 320,
+        "y": 620,
         "wires": [
             []
         ]
@@ -262,15 +262,15 @@
         "type": "ui_text",
         "z": "60921085.49545",
         "group": "cb28e5a8.1fa548",
-        "order": 6,
+        "order": 12,
         "width": "6",
-        "height": "2",
+        "height": "1",
         "name": "Text River Elbe Ref Info",
         "label": "",
         "format": "",
         "layout": "col-center",
         "x": 850,
-        "y": 600,
+        "y": 900,
         "wires": []
     },
     {
@@ -279,15 +279,15 @@
         "z": "60921085.49545",
         "group": "cb28e5a8.1fa548",
         "name": "Template River Elbe Ref Info",
-        "order": 4,
-        "width": 0,
-        "height": 0,
+        "order": 8,
+        "width": "6",
+        "height": "1",
         "format": "<div ng-style=\"{'background-color': 'lightgray', 'color': 'black', 'font-size': '0.6em'}\" >\n    PNP -5,006 m. ü. NHN<br>\n    Messwerte ungeprüft, Quelle www.pegelonline.wsv.de\n</div>",
         "storeOutMessages": true,
         "fwdInMessages": true,
         "templateScope": "local",
         "x": 600,
-        "y": 600,
+        "y": 900,
         "wires": [
             [
                 "402d1440.0b2e4c"
@@ -310,80 +310,40 @@
         "z": "60921085.49545",
         "name": "Gate State Control",
         "info": "Control the Gate State:\n0=Gate Closed\n1=Gate Open",
-        "x": 650,
-        "y": 60,
+        "x": 150,
+        "y": 240,
         "wires": []
-    },
-    {
-        "id": "ebcd5db7.4e796",
-        "type": "inject",
-        "z": "60921085.49545",
-        "name": "Set Gate State 1 (open)",
-        "topic": "",
-        "payload": "1",
-        "payloadType": "num",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "x": 680,
-        "y": 100,
-        "wires": [
-            [
-                "9af83e0c.a29e6"
-            ]
-        ]
     },
     {
         "id": "9af83e0c.a29e6",
         "type": "mqtt out",
         "z": "60921085.49545",
-        "name": "Publish floodbarrier/gatestate",
-        "topic": "floodbarrier/gatestate",
+        "name": "Publish floodbarrier/gateopen or close",
+        "topic": "",
         "qos": "",
         "retain": "",
         "broker": "574c6d3.c9a6294",
-        "x": 1000,
-        "y": 100,
+        "x": 890,
+        "y": 280,
         "wires": []
-    },
-    {
-        "id": "8f0b2988.df0978",
-        "type": "inject",
-        "z": "60921085.49545",
-        "name": "Set Gate State 0 (closed) [initial]",
-        "topic": "",
-        "payload": "0",
-        "payloadType": "num",
-        "repeat": "",
-        "crontab": "",
-        "once": true,
-        "onceDelay": 0.1,
-        "x": 710,
-        "y": 140,
-        "wires": [
-            [
-                "9af83e0c.a29e6"
-            ]
-        ]
     },
     {
         "id": "ebf667a3.fef278",
         "type": "inject",
         "z": "60921085.49545",
-        "name": "Set Gate State Threshold [initial]",
+        "name": "Set Gate State Threshold",
         "topic": "",
-        "payload": "190",
+        "payload": "210",
         "payloadType": "num",
         "repeat": "",
         "crontab": "",
         "once": true,
         "onceDelay": 0.1,
-        "x": 710,
-        "y": 180,
+        "x": 170,
+        "y": 420,
         "wires": [
             [
-                "99803f13.fb4cc"
+                "3bb039b1.ec2cb6"
             ]
         ]
     },
@@ -396,8 +356,8 @@
         "qos": "",
         "retain": "",
         "broker": "574c6d3.c9a6294",
-        "x": 1030,
-        "y": 180,
+        "x": 890,
+        "y": 420,
         "wires": []
     },
     {
@@ -410,7 +370,7 @@
         "retain": "",
         "broker": "574c6d3.c9a6294",
         "x": 860,
-        "y": 540,
+        "y": 840,
         "wires": []
     },
     {
@@ -423,7 +383,7 @@
         "datatype": "auto",
         "broker": "574c6d3.c9a6294",
         "x": 180,
-        "y": 380,
+        "y": 680,
         "wires": [
             [
                 "9e0327bd.a61d38",
@@ -441,7 +401,7 @@
         "datatype": "auto",
         "broker": "574c6d3.c9a6294",
         "x": 170,
-        "y": 280,
+        "y": 580,
         "wires": [
             [
                 "6cc3514a.5b84e",
@@ -459,7 +419,7 @@
         "datatype": "auto",
         "broker": "574c6d3.c9a6294",
         "x": 150,
-        "y": 540,
+        "y": 840,
         "wires": [
             [
                 "b5e7171b.3b4a18"
@@ -479,7 +439,7 @@
         "once": false,
         "onceDelay": "0.2",
         "x": 160,
-        "y": 480,
+        "y": 780,
         "wires": [
             [
                 "4ff26bc.a409094"
@@ -491,12 +451,12 @@
         "type": "ui_button",
         "z": "60921085.49545",
         "name": "Clear Charts",
-        "group": "cb28e5a8.1fa548",
-        "order": 7,
-        "width": "2",
-        "height": "1",
+        "group": "debeb1a0.a1f48",
+        "order": 15,
+        "width": "0",
+        "height": "0",
         "passthru": false,
-        "label": "Clear Charts",
+        "label": "Charts löschen",
         "tooltip": "",
         "color": "",
         "bgcolor": "",
@@ -505,11 +465,151 @@
         "payloadType": "json",
         "topic": "",
         "x": 610,
-        "y": 480,
+        "y": 780,
         "wires": [
             [
                 "30f7ced9.1d5f72",
                 "a2e018e4.2c3f98"
+            ]
+        ]
+    },
+    {
+        "id": "a1f7b752.733f88",
+        "type": "ui_text",
+        "z": "60921085.49545",
+        "group": "34dc63ec.bf0fbc",
+        "order": 1,
+        "width": "0",
+        "height": "0",
+        "name": "Text Gate State",
+        "label": "Tor Status",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 820,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "3bb039b1.ec2cb6",
+        "type": "ui_text_input",
+        "z": "60921085.49545",
+        "name": "Input Gate State Threshold",
+        "label": "Tor schließen bei Abs NHN (cm)",
+        "tooltip": "",
+        "group": "34dc63ec.bf0fbc",
+        "order": 4,
+        "width": "6",
+        "height": "1",
+        "passthru": false,
+        "mode": "number",
+        "delay": "0",
+        "topic": "",
+        "x": 480,
+        "y": 420,
+        "wires": [
+            [
+                "99803f13.fb4cc"
+            ]
+        ]
+    },
+    {
+        "id": "68fd9411.d9dfec",
+        "type": "mqtt in",
+        "z": "60921085.49545",
+        "name": "",
+        "topic": "floodbarrier/gatestate",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "574c6d3.c9a6294",
+        "x": 160,
+        "y": 360,
+        "wires": [
+            [
+                "8d58797b.717508"
+            ]
+        ]
+    },
+    {
+        "id": "f3fd079f.6b5228",
+        "type": "ui_button",
+        "z": "60921085.49545",
+        "name": "Button Set Gate State 1 (open)",
+        "group": "34dc63ec.bf0fbc",
+        "order": 2,
+        "width": "0",
+        "height": "0",
+        "passthru": false,
+        "label": "AUF",
+        "tooltip": "",
+        "color": "#000000",
+        "bgcolor": "#00FF00",
+        "icon": "",
+        "payload": "1",
+        "payloadType": "num",
+        "topic": "",
+        "x": 190,
+        "y": 320,
+        "wires": [
+            [
+                "8bba22a7.03c4"
+            ]
+        ]
+    },
+    {
+        "id": "5ce0e05d.9fe0a",
+        "type": "ui_button",
+        "z": "60921085.49545",
+        "name": "Button Set Gate State 0 (closed)",
+        "group": "34dc63ec.bf0fbc",
+        "order": 3,
+        "width": "0",
+        "height": "0",
+        "passthru": false,
+        "label": "ZU",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "#FF0000",
+        "icon": "",
+        "payload": "0",
+        "payloadType": "num",
+        "topic": "",
+        "x": 190,
+        "y": 280,
+        "wires": [
+            [
+                "8bba22a7.03c4"
+            ]
+        ]
+    },
+    {
+        "id": "8bba22a7.03c4",
+        "type": "function",
+        "z": "60921085.49545",
+        "name": "Set Gate State Topic",
+        "func": "var gatestateCurrent = flow.get(\"gatestate\");\nvar gatestateNew = Number(msg.payload);\n// node.warn(\"Gate Current:\" + gatestateCurrent + \", New:\" + gatestateNew);\n\nif (gatestateNew != gatestateCurrent) {\n\n    if (gatestateNew === 0) {\n        msg.topic = \"floodbarrier/gateclose\"\n    }\n    if (gatestateNew === 1) {\n        msg.topic = \"floodbarrier/gateopen\"\n    }\n    msg.payload = gatestateNew;\n    return msg;    \n}\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 460,
+        "y": 280,
+        "wires": [
+            [
+                "9af83e0c.a29e6"
+            ]
+        ]
+    },
+    {
+        "id": "8d58797b.717508",
+        "type": "function",
+        "z": "60921085.49545",
+        "name": "Set Gate State Context & Text",
+        "func": "var gatestateCurrent = Number(msg.payload);\nflow.set(\"gatestate\", gatestateCurrent);\n// node.warn(\"Gate Current:\" + gatestateCurrent);\n\nif (gatestateCurrent === 0) {\n    msg.payload = \"ZU\"\n}\n\nif (gatestateCurrent === 1) {\n    msg.payload = \"AUF\"\n}\n\nreturn msg;    \n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 490,
+        "y": 360,
+        "wires": [
+            [
+                "a1f7b752.733f88"
             ]
         ]
     },
@@ -541,6 +641,29 @@
         "z": "",
         "name": "Elbe Wasserstand Schulau",
         "tab": "ab9d9e84.0a7",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "debeb1a0.a1f48",
+        "type": "ui_group",
+        "z": "",
+        "name": "Optionen",
+        "tab": "ab9d9e84.0a7",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "34dc63ec.bf0fbc",
+        "type": "ui_group",
+        "z": "",
+        "name": "Tor",
+        "tab": "ab9d9e84.0a7",
+        "order": 2,
         "disp": true,
         "width": "6",
         "collapse": false
