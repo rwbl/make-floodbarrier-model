@@ -273,6 +273,11 @@ See files b4r-source.zip, b4r-additional-libraries.zip, node-red.flow.
 Board NodeMCU 1.0 (ESP-12E Module) with 4MB.
 IDE Options > Configure Process Timeout set to 120.
 
+Arduino IDE
+Add to File > Preferences > Additional Board Managers URLs:
+
+    https://dl.espressif.com/dl/package_esp32_index.json,http://arduino.esp8266.com/stable/package_esp8266com_index.json
+
 ### B4R IDE Compile & Upload NodeMCU
 1. Turn on the LEGO Power Functions Battery Box
 2. Set Gate to CLOSE position using the LEGO Power Functions IR Remote Control or Push-Button
