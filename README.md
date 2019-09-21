@@ -257,9 +257,11 @@ In case of an error, the error message is displayed on row 1.
 _Note_: The columns start at position 1 and not 0.
 
 ## Node-RED
-![flood-barrier-nr-f](https://user-images.githubusercontent.com/47274144/65248639-c72bfb80-daf2-11e9-919f-35ba0d2f5841.PNG)
+Log and control using Node-RED running on a Raspberry Pi 4.
 
-![flood-barrier-nr-d](https://user-images.githubusercontent.com/47274144/65248627-c3987480-daf2-11e9-8daf-1a082f56a4b5.PNG)
+![flood-barrier-nr-f](https://user-images.githubusercontent.com/47274144/65369803-43892080-dc52-11e9-883f-08830cb9be7c.png)
+
+![flood-barrier-nr-d](https://user-images.githubusercontent.com/47274144/65369804-4421b700-dc52-11e9-97eb-72997e64bc1d.png)
 
 ## Soure Code
 The source code is well documented.
