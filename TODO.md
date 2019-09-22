@@ -22,7 +22,7 @@ To control the gate PF M-Motor open, close, reverse, forward.
 #### Request online sea weather forecast
 To display on OLED row 6 (wind,temperature).
 
-#### River information subscribe MQTT
+#### External River information
 Instead using the B4R update timer cycle (with HTTP) to get & update river information, subscribe to a MQTT message holding
 the relevant information.
 This information could be provided by for example Node-RED.
