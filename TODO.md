@@ -24,10 +24,11 @@ To display on OLED row 6 (wind,temperature).
 
 #### River information subscribe MQTT
 Instead using the B4R update timer cycle (with HTTP) to get & update river information, subscribe to a MQTT message holding
-the relevant information. This information can be provided by for example Node-RED.
-The Node-RED flow send in reqular intervals (Inject Node) the HTTP request, parses the result, built the CSV payload and publishes as message.
-If doing so, the B4R update timer must be stopped, which can be done via a MQTT message as well
-The B4R program method _Mqtt_MessageArrived_ is used with the case item _mqttTopicRiverLevel_ which has already initial coding.
+the relevant information.
+This information could be provided by for example Node-RED.
+The Node-RED flow sends in reqular intervals, using the nodes _inject > change > http request > function > change > mqtt out_, the HTTP request, parses the result, built the csv string payload and publishes message (topic _floodbarrier/riverlevel_).
+If doing so, the B4R update timer must be stopped, which can be done via a MQTT message as well.
+The B4R program method _Mqtt_MessageArrived_ is used with the case item _mqttTopicRiverLevel_, which has already some initial coding.
 This needs to be enhanced to align with the HTTP JobDone method.
 I addition, a MQTT topic must be defined and subscribed to, i.e.
 
