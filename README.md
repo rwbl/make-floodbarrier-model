@@ -170,16 +170,16 @@ topic floodbarrier/gatestate ; payload 0 (closed), 1 (open)
 
 The B4R program subscribes to messages:
 ```
-topic floodbarrier/gateopen ; payload n/a - the topic is used to trigger action.
-topic floodbarrier/gateclose ; payload n/a - the topic is used to trigger action.
-topic floodbarrier/gatemotorfwd ; payload n/a - the topic is used to trigger action = move the PF M-Motor forward with lowest speed.
-topic floodbarrier/gatemotorrev ; payload n/a - the topic is used to trigger action = move the PF M-Motor reverse with lowest speed.
-topic floodbarrier/gatemotorbrk ; payload n/a - the topic is used to trigger action = break (=stop) the PF M-Motor.
+topic floodbarrier/gateopen ; payload n/a - topic triggers action to open the gate.
+topic floodbarrier/gateclose ; payload n/a - topic triggers action to close the gate.
+topic floodbarrier/gatemotorfwd ; payload n/a - topic triggers action = move PF M-Motor forward with lowest speed (FWD).
+topic floodbarrier/gatemotorrev ; payload n/a - topic triggers action = move PF M-Motor reverse with lowest speed (REV).
+topic floodbarrier/gatemotorbrk ; payload n/a - topic triggers action = break (=stop) the PF M-Motor.
 
-topic floodbarrier/gatestate ; payload 0=closed,1=open
-topic floodbarrier/gatestatethreshold ; payload NNN in cm
+topic floodbarrier/gatestate ; payload 0=closed,1=open - for tests only.
+topic floodbarrier/gatestatethreshold ; payload NNN in cm - changes the initial value of 210 cm.
 
-topic floodbarrier/riverlevel ; payload csv string: absnhn,relpnp,pnp,tide = this can be used to set the River "Elbe" levels via MQTT (by f.e. Node-RED) instead of HTTP. 
+topic floodbarrier/riverlevel ; payload csv string: absnhn,relpnp,pnp,tide - for tests only to set the River "Elbe" levels via MQTT (by f.e. Node-RED) instead of HTTP. 
 ```
 
 ### LEGO
