@@ -35,3 +35,15 @@ I addition, a MQTT topic must be defined and subscribed to, i.e.
     Private mqttTopicUseExternalInformation As Byte = "floodbarrier/userexternalinformation" '0=NO,1=YES
 and handled in _Mqtt_MessageArrived_
 The default would be 0, thus using B4R program HTTP.
+
+#### Arduino MEGA + Raspberry Pi
+This is just a thought, to use another solution instead of a NodeMCU.
+The Arduino MEGA to act as the slave to control the devices attached (no HTTP nor MQTT required).
+The Raspberry Pi to act as the master to control the slave. The logic & and the webinterface Dashboard are defined in Node-RED.
+Options to connect the Arduino MEGA and the Raspberry Pi:
+1) Arduino plug into Raspberry Pi USB port. 
+2) Use both serial pins on the Arduino and Raspberry Pi.
+The data is exchanged as bytes.
+Think option 1 is a good starter to explore.
+
+
