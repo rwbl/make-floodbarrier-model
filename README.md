@@ -2,13 +2,13 @@
 A LEGO Model to control the gate of a flood barrier model by a microcontroller with sensors, actuators and LEGO Power Functions. 
 
 # Objectives
-* To create a model of a flood barrier with a gate, in the style of the "Sperrwerk Wedeler Au" (barrier between the German rivers "Elbe" and "Wedeler Au").
-* To obtain, in regular intervals, real tide data from the "Elbe".
-* To control the gate depending high tide (flood) level = close the gate at Abs NHN river level threshold reached else open the gate.
-* To display in a large number display the "Elbe" level Abs NHN = Absolute Standard Elevation Zero Level (cm).
-* To display information in a small display, i.e. Abs NHN (cm), Rel PNP = Relative Tide Gauge Zero (cm), PNP=Tide Gauge Zero (m), Tide Ebb or Flood, Gate State Open or Close.
-* To remote control the gate.
-* To publish tide data.
+* To create a model of a flood barrier with a gate, in the style of the "Sperrwerk Wedeler Au" (barrier between the German rivers "Elbe" and "Wedeler Au")
+* To obtain, in regular intervals, real tide data from the river "Elbe"
+* To control the gate depending high tide (flood) level = close the gate at Abs NHN river level threshold reached else open the gate
+* To display in a large number display the river "Elbe" level Abs NHN = Absolute Standard Elevation Zero Level (cm)
+* To display information in a small display, i.e. Abs NHN (cm), Rel PNP = Relative Tide Gauge Zero (cm), PNP=Tide Gauge Zero (m), Tide Ebb or Flood, Gate State Open or Close
+* To remote control the gate
+* To publish tide data
 
 _Note_: This make project is for private use only.
 
@@ -38,7 +38,7 @@ _Note_: This make project is for private use only.
 * LEGO Power Functions Battery Box (8881)
 * LEGO Power Functions M-Motor (8883)
 * LEGO Power Functions IR Receiver (8884) 
-* LEGO Bricks, LEGO Technic
+* Vvarious LEGO Bricks and LEGO Technic parts
 
 ## Software
 * Arduino IDE 1.8.9 or higher
@@ -65,15 +65,15 @@ MQTT messages are published with the river level information (can be used to dis
 
 ### Outline
 See also TODO.md.
-Some ideas come to mind planned for a next version.
-* Display real signal depending gate state.
+Ideas in mind planned for any next version.
+* Display real signal depending gate state
 	* Requires additional LEDs (i.e. gate open: 1 white + 2 red; gate closed: 2 red). There are no GPIO pins left = requires multiple LED on one pin solution (i.e. Shift Register 74HC595 or MAX7219)
-* REED switch to control gate close position (instead of using timer from open to close position).
-	* Requires additional GPIO with pullup There are no GPIO pins left = no solution yet found.
+* REED switch to control gate close position (instead of using timer from open to close position)
+	* Requires additional GPIO with pullup There are no GPIO pins left = no solution yet found
 * Configuration parameter setting EEPROM using B4J client or Node-RED: WiFi SSID&Key, Gate Close Threshold, MQTT Server IP
-* MQTT parsing using extenal library instead of using ByteConverter with Split & IndexOf methods.
-* Multi push-buttons to control the gate PF M-Motor open, close, reverse, forward.
-* Request online sea weather forecast to display on OLED row 6 (wind,temperature).
+* MQTT parsing using extenal library instead of using ByteConverter with Split & IndexOf methods
+* Multi push-buttons to control the gate PF M-Motor open, close, reverse, forward
+* Request online sea weather forecast to display on OLED row 6 (wind,temperature)
 
 ## Wiring
 ![floodbarrier-c](https://user-images.githubusercontent.com/47274144/65248619-bed3c080-daf2-11e9-99fe-e938e12ad2e4.png)
@@ -89,30 +89,32 @@ DIO=D7 (GPIO13)
 VCC=3V3
 GND=GND
 
-OLED=NodeMCU
+OLED (I2C)=NodeMCU
 SDA=D4 (GPIO2)
 SCL=D5 (GPIO14)
 VCC=3V3
 GND=GND
+I2C Address: 0x3c
 
-REED Switch=NodeMMCU
+REED Switch (open gate)=NodeMMCU
 S=D1 (GPIO5)
 VCC=3V3
 GND=GND
 
-Push-Button Gate Switch=NodeMCU
+Push-Button (gate switch)=NodeMCU
 S=D3 (GPIO0)
 GND=GND
 
-LED GATE SIGNAL=NodeMCU
-Gate open=green=RX (GPIO03)
-Gate closed=green=D8 (GPIO15)
+LED GATE STATE SIGNAL=NodeMCU
+LED GREEN (gate open)=RX (GPIO03)
+LED Red (gate closed)=green=D8 (GPIO15)
+GND=GND
 ```
 
 ### HTTP
-In regular intervals, a HTTP download request (url hardcoded) is used to get the river level information from a German webservice PEGELONLINE.de.
+In regular intervals, a HTTP download request (url hardcoded) is used to get the river level information from a German webservice PEGELONLINE.wsv.de.
 The HTTP response is a JSON string which is parsed (bit quick and dirty using various ByteConverter methods, i.e. Split,IndexOf and others with StringFromBytes to get the various river "Elbe" values.
-Extract from the HTTP JSOn Response:
+Sample extract from the HTTP JSON Response:
 ```
 {...
   "timeseries": [
@@ -302,6 +304,7 @@ _Note_: It might happen from time-to-time, that an "unable to upload" error occu
 * Friends-of-Fritzing foundation for fritzing [Info](https://fritzing.org)
 * jurriaan for the LEGO Power Functions library [Info](https://github.com/jurriaan/Arduino-PowerFunctions)
 * remoteme for the ESP8266 OLED library [Info](https://github.com/remoteme/esp8266-OLED)
+* PEGELONLINE.wsv.de for providing river level information services.
 
 ### Licence
 GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
