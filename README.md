@@ -38,7 +38,8 @@ _Note_: This make project is for private use only.
 * LEGO Power Functions Battery Box (8881)
 * LEGO Power Functions M-Motor (8883)
 * LEGO Power Functions IR Receiver (8884) 
-* Vvarious LEGO Bricks and LEGO Technic parts
+* Various LEGO Bricks and LEGO Technic parts
+* Various wires
 
 ## Software
 * Arduino IDE 1.8.9 or higher
@@ -140,7 +141,7 @@ The keys used are
     timerseries[0].currentMeasurement.value for Abs PNP.
     timerseries[0].gaugeZero.value for PNP.
 
-In method HTTP JobDone, the values are extracted (snippet):
+In method HTTP JobDone, the values are extracted (snippet) using the ByteConverter:
 
     Dim bc As ByteConverter
     For Each value() As Byte In bc.Split(jobresponse, """value"": ")
@@ -154,9 +155,11 @@ In method HTTP JobDone, the values are extracted (snippet):
      Next
      riverlevelABSNHN = riverlevelRELPNP + (riverlevelPNP * 100)
 
+_Note_: As mentioned, seeking for a proper JSON parse solution (probably with an additional library).
+
 ### MQTT
-A connection is made to a MQTT Broker (IP address hardcoded) running on a Raspberry Pi 4.
-The B4R program publishes:
+A connection is made to a MQTT Broker (IP address hardcoded) running on a Raspberry Pi 4 (mosquitto broker).
+The B4R program publishes messages:
 ```
 topic floodbarrier/riverlevelabsnhn ; payload NN cm
 topic floodbarrier/riverlevelrelpnp ; payload NN cm
@@ -165,7 +168,7 @@ topic floodbarrier/riverleveltide ; payload Flut or Ebbe
 topic floodbarrier/gatestate ; payload 0 (closed), 1 (open)
 ```
 
-The B4R program subscribes to:
+The B4R program subscribes to messages:
 ```
 topic floodbarrier/gateopen ; payload n/a - the topic is used to trigger action.
 topic floodbarrier/gateclose ; payload n/a - the topic is used to trigger action.
@@ -180,12 +183,13 @@ topic floodbarrier/riverlevel ; payload csv string: absnhn,relpnp,pnp,tide = thi
 ```
 
 ### LEGO
-The model is built using mix of classic & technic bricks. No modifications made nor soldering of components.
+The model is built using mix of LEGO classic & technic bricks. No modifications made nor soldering of components.
 
-### LEGO Power Functions (abbreviated as PF)
+### LEGO Power Functions
+(abbreviated as PF)
 
 #### Wiring
-PF Battery -> IR Receiver Green Output -> M-Motor | Lights
+PF V Battery -> IR Receiver Green Output -> M-Motor | Lights
 
 #### Gate Open / Close Speed
 The PF M-Motor controls opening or closing the gate and is used to set the initial position of the gate (this via IR Speed Remote Control).
@@ -200,9 +204,10 @@ When the PF M-Motor is running to either open or close the gate, the PF Light is
 #### Gate Open / Close Movement
 The initial state of the gate must be set to closed. The REED switch has state 1 (true).
 
-When the gate opens, the PF M-Motor is running Forward (FWD2) for 4 seconds (with speed FWD2 defined in library rPowerFunctions).
-When the gate closes, the PF M-Motor is running Reverse (REV2) till the REED switch gets state 0 (false) as the ecognised by the magnet on the back of the gate.
-The 4 seconds are controlled by a timer, i.e. 4 cycles a 1000 ms.
+When the gate opens, the PF M-Motor is running Reverse (turning left, speed REV2) for 4 seconds (with speed FWD2 defined in library rPowerFunctions).
+When the gate closes, the PF M-Motor is running Forward (turning right, speed FWD2) till the REED switch gets state 0 (false) as  recognised by the magnet, placed on the back of the gate.
+The 4 seconds are controlled by a timer, i.e. 4 cycles a 1000 ms (aligned with the PF M-Motor speed FWD2).
+_Note_: If the PF M-Motor speed is changed (i.e. running slower FWD | REV), then adjust the timer cycles to ensure the gate holds at the right position.
 
 The gate state are using global vars:
 
@@ -211,8 +216,12 @@ The gate state are using global vars:
     'ABSNHN >= 210 close the gate else open
     Private gateStateThreshold As Int = 210
 
-__Note__
-for next version considering to use a second REED switch (but not GPIO pins left anymore).
+The initial threshold, i.e. 210 m, is checked at every river level update timer cycle. If reachd the gate is closed or if below, the gate is opened. The initial threshold is given by information from the real flood barrier - in practise the gate is (already) manuall closed by ~180 cm.
+The threshold can be set via MQTT message, i.e. Node-RED flow with Dashboard UI.
+
+    topic floodbarrier/gatestatethreshold ; payload NNN in cm
+
+_Note_: Considering using a second REED switch to stop the PF M-Moter for gate closure. Issue: no pullup GPIO pins available.
 
 ### 4-Digit Display (Catalex 4-Digit Display)
 The display shows the river "Elbe" level in "Abs NHN" in cm.
