@@ -1,5 +1,5 @@
 # make-project-floodbarrier-model
-A LEGO Model to control the gate of a flood barrier model by a microcontroller with sensors, actuators and LEGO Power Functions. 
+A custom LEGO creation to control the gate of a flood barrier model by a microcontroller with sensors, actuators and LEGO Power Functions. 
 
 # Objectives
 * To create a model of a flood barrier with a gate, in the style of the "Sperrwerk Wedeler Au" (barrier between the German rivers "Elbe" and "Wedeler Au")
@@ -9,6 +9,7 @@ A LEGO Model to control the gate of a flood barrier model by a microcontroller w
 * To display information in a small display, i.e. Abs NHN (cm), Rel PNP = Relative Tide Gauge Zero (cm), PNP=Tide Gauge Zero (m), Tide Ebb or Flood, Gate State Open or Close
 * To remote control the gate
 * To publish tide data
+* To have fun exploring and creating technical type of digital custom creations
 
 _Note_: This make project is for private use only.
 
