@@ -316,6 +316,8 @@ _Note_: It might happen from time-to-time, that an "unable to upload" error occu
 * remoteme for the ESP8266 OLED library [Info](https://github.com/remoteme/esp8266-OLED)
 * PEGELONLINE.wsv.de for providing river level information services.
 
+Also published at Anywhere Software [B4R Forum](https://www.b4x.com/android/forum/threads/flood-barrier-model.109726/).
+
 ### Licence
 GNU GENERAL PUBLIC LICENSE Version 3, 29 June 2007
 
