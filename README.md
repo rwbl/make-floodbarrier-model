@@ -1,5 +1,6 @@
 # make-floodbarrier-model
-This make project is a custom LEGO creation to control the gate of a flood barrier model by a microcontroller with sensors, actuators and LEGO Power Functions. 
+This make project is a custom LEGO® creation to control the gate of a flood barrier model by a microcontroller with sensors, actuators and LEGO Power Functions. 
+(LEGO® is a trademark of the LEGO Group)
 
 # Objectives
 * To create a model of a flood barrier with a gate, in the style of the "Sperrwerk Wedeler Au" (barrier between the German rivers "Elbe" and "Wedeler Au")
